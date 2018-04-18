@@ -1,0 +1,29 @@
+<launch>
+    <arg name="viz" default="true"/>
+    <arg name="web_server" default="false"/>
+    <arg name="rosbridge" default="true"/>
+
+    <!-- mavros -->
+    <include file="$(find aeroros)/launch/mavros.launch">
+        <arg name="viz" value="$(arg viz)"/>
+    </include>
+
+    <!-- web server -->
+    <include file="$(find aeroros)/launch/web_server.launch" if="$(arg web_server)"/>
+
+    <!-- main nodelet manager -->
+    <node pkg="nodelet" type="nodelet" name="nodelet_manager" args="manager" output="screen" clear_params="true">
+        <param name="num_worker_threads" value="2"/>
+    </node>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="local_origin_upside_down_frame" args="0 0 0 3.1415926 3.1415926 0 local_origin local_origin_upside_down"/>
+
+    <!-- fcu_horiz frame -->
+    <node pkg="nodelet" type="nodelet" name="fcu_horiz" args="standalone aeroros/fcu_horiz" output="screen" clear_params="true"/>
+
+    <!-- simplified offboard control -->
+    <node name="mavlink_offboard" pkg="aeroros" type="mavlink_offboard.py" output="screen"/>
+
+    <!-- rosbridge -->
+    <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" if="$(eval rosbridge)"/>
+</launch>
