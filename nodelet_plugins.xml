@@ -1,0 +1,5 @@
+<library path="lib/libfcu_horiz">
+   <class name="aeroros/fcu_horiz" type="FcuHoriz" base_class_type="nodelet::Nodelet">
+      <description/>
+   </class>
+</library>
