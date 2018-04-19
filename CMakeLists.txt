@@ -111,8 +111,8 @@ generate_messages(
 # )
 
 # Verify all launch files in launch directory
-find_package(catkin REQUIRED COMPONENTS roslaunch)
-roslaunch_add_file_check(launch)
+# find_package(catkin REQUIRED COMPONENTS roslaunch)
+# roslaunch_add_file_check(launch)
 
 ###################################
 ## catkin specific configuration ##
@@ -124,8 +124,8 @@ roslaunch_add_file_check(launch)
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES clever
+  INCLUDE_DIRS src
+#  LIBRARIES aeroros
 #  CATKIN_DEPENDS other_catkin_pkg
 #  DEPENDS system_lib
 )
