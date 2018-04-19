@@ -110,6 +110,10 @@ generate_messages(
 #   cfg/DynReconf2.cfg
 # )
 
+# Verify all launch files in launch directory
+find_package(catkin REQUIRED COMPONENTS roslaunch)
+roslaunch_add_file_check(launch)
+
 ###################################
 ## catkin specific configuration ##
 ###################################

@@ -1,7 +1,7 @@
 <launch>
     <arg name="viz" default="true"/>
-    <arg name="web_server" default="true"/>
-    <arg name="rosbridge" default="true"/>
+    <arg name="web_server" default="false"/>
+    <arg name="rosbridge" default="false"/>
 
     <!-- mavros -->
     <include file="$(find aeroros)/launch/mavros.launch">
