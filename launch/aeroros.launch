@@ -21,7 +21,7 @@
     <!-- fcu_horiz frame -->
     <node pkg="nodelet" type="nodelet" name="fcu_horiz" args="standalone aeroros/fcu_horiz" output="screen" clear_params="true"/>
 
-    <!-- simplified offboard control -->
+    <!-- offboard control -->
     <node name="mavlink_offboard" pkg="aeroros" type="mavlink_offboard.py" output="screen"/>
 
     <!-- rosbridge -->
